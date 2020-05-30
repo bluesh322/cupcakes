@@ -21,7 +21,14 @@ def index():
     #cupcakes = Cupcake.query.all()
     form = AddCupcakeForm()
     return render_template('index.html', form = form)
-"""
+
+@app.errorhandler(404)
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
+
+
+""" - I made this post route initially because I wanted to use forms. HOW DO I VALIDATE ON SUBMIT IN JS?
 @app.route('/', methods=["POST"])
 def add_cupcake():
     form = AddCupcakeForm()
